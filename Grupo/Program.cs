@@ -12,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+/*
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -27,6 +28,7 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.Zero,
     };
 });
+*/
 
 var app = builder.Build();
 
@@ -61,7 +63,7 @@ app.MapGet("/weatherforecast", () =>
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
+//app.UseAuthentication();
 
 app.MapControllers();
 
