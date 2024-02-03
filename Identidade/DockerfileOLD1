@@ -1,0 +1,23 @@
+# https://hub.docker.com/_/microsoft-dotnet
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /source
+
+# copy csproj and restore as distinct layers
+COPY *.sln .
+COPY IdentidadeAPI.csproj ./identidadeapi/
+RUN dotnet restore
+
+# copy everything else and build app
+COPY . ./identidadeapi/
+WORKDIR /source/identidadeapi
+RUN dotnet publish -c release -o /app --no-restore
+
+# final stage/image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=build /app ./
+
+# docker build -t identidade-api:1.1 .
+
+# docker build -t aspnetapp .
+# docker run -it --rm -p 5000:8080 --name aspnetcore_sample aspnetapp

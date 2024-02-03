@@ -1,0 +1,68 @@
+Projeto com microserviços de exemplo:
+https://github.com/dotnet/eShop/blob/main/img/eshop_architecture.png
+
+
+AddAutoMapper
+
+https://www.youtube.com/watch?v=t6DciFNrwDg
+
+Playlist:
+https://www.youtube.com/playlist?list=PL3ewn8T-zRWgO-GAdXjVRh-6thRog6ddg
+
+
+User Secrets .NET
+=============================================
+$ dotnet user-screts init
+
+$ dotnet user-secrets set "SymmetricSecurityKey" "VCUFCJ"
+$ dotnet user-secrets set "ConnectionStrings:IdentidadeDB" "Data Source=DESKTOP-DFJBPVD\SQLEXPRESS;Initial Catalog=IdentidadeDB;User ID=sa;Password=root;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;MultipleActiveResultSets=true"
+
+    
+C:\Users\limeira\AppData\Roaming\Microsoft\UserSecrets
+
+1) Adicionar dependências
+========================================================================================
+Install-Package AutoMapper -Version 12.0.1
+Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 12.0.1
+Install-Package Microsoft.EntityFrameworkCore.Design -Version 8.0.1
+Install-Package Microsoft.EntityFrameworkCore.Proxies -Version 8.0.1
+Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 8.0.1
+Install-Package Microsoft.EntityFrameworkCore.Tools -Version 8.0.1
+
+Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore -Version 8.0.1
+Install-Package Microsoft.Extensions.Identity.Stores -Version 8.0.1
+Install-Package System.IdentityModel.Tokens.Jwt -Version 7.2.0
+Install-Package Microsoft.AspNetCore.Authentication.JwtBearer -Version 8.0.1
+
+3) Adicionar a string de conexão com o banco de dados dentro de appsettings.json
+========================================================================================
+  "ConnectionStrings": {
+    "CinemaDB": "Data Source=DESKTOP-DFJBPVD\\SQLEXPRESS;Initial Catalog=CinemaDB;User ID=sa;Password=root;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;MultipleActiveResultSets=true"
+  },
+
+
+
+2) Adicionar configurações no Program.cs
+========================================================================================
+// Add services to the container.
+builder.Services.AddDbContext<LojaContext>(options =>
+{
+    options
+        .UseLazyLoadingProxies()
+        .UseSqlServer(builder.Configuration.GetConnectionString("LojaDB"));
+});
+
+builder.Services.
+    AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
+
+
+=> E também app.MapControllers antes de app.Run():
+==================================================
+   app.MapControllers();
