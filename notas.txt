@@ -1,0 +1,4 @@
+
+Criando a aplicação base no dotnet:
+
+> dotnet new webapi -o Grupo -n Sl.Grupo

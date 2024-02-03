@@ -1,0 +1,6 @@
+@Sl.Grupo_HostAddress = http://localhost:5241
+
+GET {{Sl.Grupo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

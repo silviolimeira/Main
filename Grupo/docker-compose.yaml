@@ -1,0 +1,33 @@
+services:
+  webapi:
+    image: grupo:1.0
+    container_name: grupo
+    networks:
+      - compose-bridge
+    ports:
+      - "8080:8080"
+    #depends_on:
+    #  - sqlserver
+  #sqlserver:
+  #  image: mcr.microsoft.com/mssql/server:2022-latest
+  #  environment:
+  #    SA_PASSWORD: "SqlServer2022!"
+  #    ACCEPT_EULA: "Y"
+  #    MSSQL_PID: "Developer"
+  #  ports:
+  #    - "1433:1433"
+  #  networks:
+  #    - compose-bridge
+  #mssqltools:
+  #  image: mcr.microsoft.com/mssql-tools
+  #  depends_on:
+  #    - sqlserver
+  #  volumes:
+  #    - ./BKPIdentidadeDB.sql:/tmp/BKPIdentidadeDB.sql
+  #    - ./init-database.sh:/tmp/init-database.sh
+  #  command: /bin/bash ./tmp/init-database.sh
+  #  networks:
+  #    - compose-bridge
+networks:
+  compose-bridge:
+    driver: bridge
