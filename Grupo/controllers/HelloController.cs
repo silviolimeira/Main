@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Sl.Grupo.controllers
+namespace Sl.GrupoAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

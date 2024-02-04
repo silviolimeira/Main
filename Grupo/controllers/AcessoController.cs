@@ -8,7 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Json;
 using System.Text.Json.Serialization;
 
-namespace Sl.Grupo.Controllers
+namespace Sl.GrupoAPI.Controllers
 {
     [ApiController]
     [Route("[Controller]")]

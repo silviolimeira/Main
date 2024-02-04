@@ -34,6 +34,14 @@ Install-Package Microsoft.Extensions.Identity.Stores -Version 8.0.1
 Install-Package System.IdentityModel.Tokens.Jwt -Version 7.2.0
 Install-Package Microsoft.AspNetCore.Authentication.JwtBearer -Version 8.0.1
 
+MySQL:
+Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore -Version 8.0.1
+Install-Package Microsoft.EntityFrameworkCore.Tools -Version 8.0.1
+Install-Package Pomelo.EntityFrameworkCore.MySql -Version 7.0.0
+Install-Package Pomelo.EntityFrameworkCore.MySql -Version 8.0.0-beta.2
+
+Install-Package Microsoft.EntityFrameworkCore.Design -Version 8.0.1
+
 3) Adicionar a string de conexão com o banco de dados dentro de appsettings.json
 ========================================================================================
   "ConnectionStrings": {
@@ -66,3 +74,7 @@ builder.Services.AddControllers()
 => E também app.MapControllers antes de app.Run():
 ==================================================
    app.MapControllers();
+
+
+Subindo o Container de Banco de Dados MySQL:
+docker run --name=mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
