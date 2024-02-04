@@ -1,0 +1,30 @@
+#services:
+  #webapi:
+  #  image: grupo:1.0
+  #  container_name: grupo
+  #  networks:
+  #    - compose-bridge
+  #  ports:
+  #    - "8080:8080"
+  #  depends_on:
+  #    - sqlserver
+version: '3'
+
+services:
+  db:
+    build: ./Db
+    ports:
+        - 1433:1433
+networks:
+  compose-bridge:
+    driver: bridge
+
+# referencia: https://stackoverflow.com/questions/69941444/how-to-have-docker-compose-init-a-sql-server-database
+
+# docker exec -it container_id /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P SqlServer2022!
+# docker exec -it 2c5bf151f456 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P password123!
+
+# show tables
+# referencia: https://stackoverflow.com/questions/175415/how-do-i-get-list-of-all-tables-in-a-database-using-tsql
+
+# SELECT TABLE_NAME FROM [productdb].INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'
