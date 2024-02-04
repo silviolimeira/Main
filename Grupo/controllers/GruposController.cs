@@ -42,7 +42,6 @@ namespace Sl.GrupoAPI.Controllers
             return CreatedAtAction(nameof(RecuperaGrupoPorId), new { Id = grupo.Id }, grupo);
         }
 
-
         [HttpGet]
         public IEnumerable<ReadGrupoDto> RecuperaGrupos([FromQuery] int skip = 0, [FromQuery] int take = 50)
         {

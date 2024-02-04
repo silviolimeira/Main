@@ -42,6 +42,44 @@ Install-Package Pomelo.EntityFrameworkCore.MySql -Version 8.0.0-beta.2
 
 Install-Package Microsoft.EntityFrameworkCore.Design -Version 8.0.1
 
+Instalando a ferramenta do EF:
+Referência:
+https://learn.microsoft.com/en-us/ef/core/cli/dotnet#installing-the-tools
+
+Intalling the tools .NET CLI:
+ dotnet tool install --global dotnet-ef
+
+Update the tool using the following command:
+ dotnet tool update --global dotnet-ef
+
+Before you can use the tools on a specific project, you'll need to add the
+Microsoft.EntittyFrameworkCore.Design package to it.
+ dotnet add package Microsoft.EntityFrameworkCore.Design
+
+
+Verify Installation:
+ dontnet ef
+
+Criando um script da migração para aplicar em produção:
+ dotnet ef migrations script > ef-migrations-script-sample.sql
+
+** It is recommended to deploy migrations to a production database is by
+   generating SQL scripts.
+Referêcia: https://www.entityframeworktutorial.net/efcore/generate-sql-script.aspx
+
+Criando um bundle para migração:
+ dotnet ef migrations bundle
+
+> dotnet ef migrations bundle
+Build started...
+Build succeeded.
+Building bundle...
+Done. Migrations Bundle: J:\2023\Docker\Main\Identidade\efbundle.exe
+Don't forget to copy appsettings.json alongside your bundle if you need it to apply migrations.
+
+https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/applying?tabs=dotnet-core-cli
+
+
 3) Adicionar a string de conexão com o banco de dados dentro de appsettings.json
 ========================================================================================
   "ConnectionStrings": {
