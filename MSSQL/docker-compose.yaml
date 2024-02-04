@@ -13,8 +13,10 @@ version: '3'
 services:
   db:
     build: ./Db
+    networks:
+      - compose-bridge
     ports:
-        - 1433:1433
+      - 1433:1433
 networks:
   compose-bridge:
     driver: bridge
