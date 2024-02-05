@@ -34,6 +34,9 @@ Install-Package Microsoft.Extensions.Identity.Stores -Version 8.0.1
 Install-Package System.IdentityModel.Tokens.Jwt -Version 7.2.0
 Install-Package Microsoft.AspNetCore.Authentication.JwtBearer -Version 8.0.1
 
+Install-Package Microsoft.AspNetCore.OpenApi -Version 8.0.1
+Install-Package Swashbuckle.AspNetCore -Version 6.4.0
+
 MySQL:
 Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore -Version 8.0.1
 Install-Package Microsoft.EntityFrameworkCore.Tools -Version 8.0.1
