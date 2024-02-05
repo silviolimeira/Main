@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using IdentidadeAPI.Data.Dtos;
+using IdentidadeAPI.GrupoServiceHttpClient;
 using IdentidadeAPI.Models;
 using IdentidadeAPI.Services;
 using Microsoft.AspNetCore.Identity;
@@ -13,16 +14,22 @@ namespace IdentidadeAPI.Controllers
     public class UsuariosController : ControllerBase
     {
         private UsuarioService _usuarioService;
+        private IGrupoService _grupoServiceHttpClient;
 
-        public UsuariosController(UsuarioService usuarioService)
+        public UsuariosController(UsuarioService usuarioService, IGrupoService grupoServiceHttpClient)
         {
             _usuarioService = usuarioService;
+            _grupoServiceHttpClient = grupoServiceHttpClient;
         }
 
         [HttpPost("cadastro")]
         public async Task<IActionResult> CadastraUsuarioAsync(CreateUsuarioDto dto)
         {
-            await _usuarioService.CadastraAsync(dto);
+            
+            
+            //_grupoServiceHttpClient.EnviaUsuario(dto);
+
+            await _usuarioService.CadastraAsync(dto); 
             
             return Ok("Usuário Criado.");
         }
@@ -31,6 +38,8 @@ namespace IdentidadeAPI.Controllers
         public async Task<IActionResult> Login(LoginUsuarioDto dto)
         {
             var token = await _usuarioService.LoginUsuario(dto);
+
+            _grupoServiceHttpClient.EnviaUsuario(dto);
 
             return Ok(token);
         }

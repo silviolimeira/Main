@@ -1,5 +1,6 @@
 using IdentidadeAPI.Authorization;
 using IdentidadeAPI.Data;
+using IdentidadeAPI.GrupoServiceHttpClient;
 using IdentidadeAPI.Models;
 using IdentidadeAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -40,6 +41,8 @@ builder.Services.AddIdentity<Usuario, IdentityRole>()
 builder.Services.AddTransient<UsuarioService>();
 builder.Services.AddTransient<TokenService>();
 builder.Services.AddSingleton<IAuthorizationHandler, IdadeAuthorization>();
+
+builder.Services.AddHttpClient<IGrupoService, GrupoService>();
 
 builder.Services.AddAuthentication(options =>
 {

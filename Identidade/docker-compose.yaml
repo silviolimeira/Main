@@ -3,7 +3,7 @@ services:
     image: identidade:1.0
     container_name: identidade
     networks:
-      - compose-bridge
+     - compose-bridge
     ports:
       - "8080:8080"
   sqlserver:

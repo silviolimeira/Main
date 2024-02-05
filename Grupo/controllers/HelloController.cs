@@ -12,5 +12,12 @@ namespace Sl.GrupoAPI.Controllers
         {
             return "Hello World!";
         }
+
+        [HttpPost]
+        public IActionResult Post(string mensagem)
+        {
+            Console.WriteLine("### GRUPO >>> " + mensagem);
+            return Ok("Grupo - mensagem recebida: " + mensagem);
+        }
     }
 }
