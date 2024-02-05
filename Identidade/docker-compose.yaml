@@ -1,19 +1,24 @@
 services:
   webapi:
-    image: identidade-api:1.0
-    container_name: identidade-api
+    image: identidade:1.0
+    container_name: identidade
     networks:
       - compose-bridge
     ports:
       - "8080:8080"
-    #depends_on:
-    #  - sqlserver
   sqlserver:
     build: ./Db
     networks:
       - compose-bridge
     ports:
       - 1433:1433      
+  grupoapi:
+    image: grupo:1.0
+    container_name: grupo
+    networks:
+      - compose-bridge
+    ports:
+      - "8081:8080"
 networks:
   compose-bridge:
     driver: bridge

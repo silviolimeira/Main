@@ -10,6 +10,10 @@ WORKDIR /app
 COPY --from=build /app/out .
 ENTRYPOINT [ "dotnet", "IdentidadeAPI.dll" ]
 
+# Expose port 1433 in case accessing from other container
+# Expose port externally from docker-compose.yml
+EXPOSE 8080
+
 # docker build -t identidade-api:1.0 .
 
 #removendo containers

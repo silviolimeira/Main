@@ -19,3 +19,5 @@ EXPOSE 1433
 
 # Run Microsoft SQL Server and initialization script (at the same time)
 CMD /bin/bash ./entrypoint.sh
+
+# docker build -t mssqldb:1.0 .
