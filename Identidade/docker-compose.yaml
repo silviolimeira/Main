@@ -1,17 +1,31 @@
 services:
-  webapi:
-    image: identidade:1.0
-    container_name: identidade
-    networks:
-     - compose-bridge
-    ports:
-      - "8080:8080"
   sqlserver:
     build: ./Db
     networks:
       - compose-bridge
     ports:
-      - 1433:1433      
+      - 1433:1433
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    expose:
+      - 5672
+      - 15672
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - compose-bridge
+  webapi:
+    image: identidade:1.0
+    container_name: identidade
+    networks:
+      - compose-bridge
+    ports:
+      - "8080:8080"
   grupoapi:
     image: grupo:1.0
     container_name: grupo
@@ -19,7 +33,8 @@ services:
       - compose-bridge
     ports:
       - "8081:8080"
+    depends_on:
+      - webapi
 networks:
   compose-bridge:
     driver: bridge
-

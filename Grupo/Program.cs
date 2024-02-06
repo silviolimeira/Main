@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Sl.GrupoAPI.Data;
+using Sl.GrupoAPI.EventProcessor;
+using Sl.GrupoAPI.RabbitMqClient;
 using System.Text.Json.Serialization;
 
 
@@ -30,7 +32,8 @@ builder.Services.
     AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
-builder.Services.AddControllers();
+builder.Services.AddHostedService<RabbitMqSubscriber>();
+builder.Services.AddSingleton<IProcessaEvento, ProcessaEvento>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

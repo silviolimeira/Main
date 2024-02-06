@@ -2,6 +2,7 @@
 using IdentidadeAPI.Data.Dtos;
 using IdentidadeAPI.GrupoServiceHttpClient;
 using IdentidadeAPI.Models;
+using IdentidadeAPI.RabbitMqClient;
 using IdentidadeAPI.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +16,13 @@ namespace IdentidadeAPI.Controllers
     {
         private UsuarioService _usuarioService;
         private IGrupoService _grupoServiceHttpClient;
+        private IRabbitMqClient _rabbitMqClient;
 
-        public UsuariosController(UsuarioService usuarioService, IGrupoService grupoServiceHttpClient)
+        public UsuariosController(UsuarioService usuarioService, IGrupoService grupoServiceHttpClient, IRabbitMqClient rabbitMqClient)
         {
             _usuarioService = usuarioService;
             _grupoServiceHttpClient = grupoServiceHttpClient;
+            _rabbitMqClient = rabbitMqClient;
         }
 
         [HttpPost("cadastro")]
@@ -39,8 +42,8 @@ namespace IdentidadeAPI.Controllers
         {
             var token = await _usuarioService.LoginUsuario(dto);
 
-            _grupoServiceHttpClient.EnviaUsuario(dto);
-
+            //_grupoServiceHttpClient.EnviaUsuario(dto);
+            _rabbitMqClient.PublicaUsuario(dto);
             return Ok(token);
         }
 

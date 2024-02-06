@@ -2,6 +2,7 @@ using IdentidadeAPI.Authorization;
 using IdentidadeAPI.Data;
 using IdentidadeAPI.GrupoServiceHttpClient;
 using IdentidadeAPI.Models;
+using IdentidadeAPI.RabbitMqClient;
 using IdentidadeAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -44,6 +45,7 @@ builder.Services.AddTransient<TokenService>();
 builder.Services.AddSingleton<IAuthorizationHandler, IdadeAuthorization>();
 
 builder.Services.AddHttpClient<IGrupoService, GrupoService>();
+builder.Services.AddSingleton<IRabbitMqClient, RabbitMqClient>();
 
 builder.Services.AddAuthentication(options =>
 {
