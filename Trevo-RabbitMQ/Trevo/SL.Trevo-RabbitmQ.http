@@ -1,0 +1,6 @@
+@SL.Trevo_RabbitmQ_HostAddress = http://localhost:5144
+
+GET {{SL.Trevo_RabbitmQ_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

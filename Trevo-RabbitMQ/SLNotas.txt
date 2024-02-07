@@ -1,0 +1,28 @@
+
+Listando os templates .net 
+
+> dotnet new list
+
+Criando uma aplicação .NET
+> dotnet new webapi --sdk-version 8.0.101 -o Trevo -n SL.Trevo-RabbitmQ
+
+Instalar Pacotes:
+PM> Install-Package RabbitMQ.Client -Version 7.0.0-alpha.2
+    Install-Package AutoMapper -Version 12.0.1
+    Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 12.0.1
+
+
+// Adicionar o servico 
+builder.Services.AddControllers()
+
+// Adicionar os Mapeamentos para os AddControllers
+
+
+Exemplo MQQT usando o RabbitMQ:
+  https://jvilleres3.medium.com/mqtt-quickstart-set-up-an-mqtt-broker-and-client-for-your-iot-project-6b9f96c06e64
+
+
+Verificando as portas abertas:
+> netstat -a
+
+
