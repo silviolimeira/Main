@@ -1,0 +1,29 @@
+services:
+  rabbitmq:
+    image: slrabbitmq:1.0
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 1833:1833
+      - 15672:15672
+    expose:
+      - 5672
+      - 1833
+      - 15672
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - compose-bridge
+  slhello:
+    image: slhello:1.0
+    container_name: slhello
+    depends_on:
+      - rabbitmq
+    networks:
+      - compose-bridge
+networks:
+  compose-bridge:
+    driver: bridge
+
+# docker run -it --rm --name slhello slhello:1.0

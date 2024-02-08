@@ -1,0 +1,19 @@
+
+
+Próximos passos no Projeto Trevo:
+
+- Criar o projeto Entrada, para enviar uma mensagem AQMP
+  para testar de o Trevo está recebendo a mensagem.
+
+- Também fazer um teste usando como base a referência:
+
+https://jvilleres3.medium.com/mqtt-quickstart-set-up-an-mqtt-broker-and-client-for-your-iot-project-6b9f96c06e64
+
+* os clientes para enviar/receber mensagens são em Python,
+  mesmo assim fazer o teste 
+  (
+    - procurar uma imagem docker com python
+    - criar om Docker file, para usar em um docker-compose.yaml
+      para utilizar a imagem python e adicionar os exemplos dos clientes
+  ) 
+

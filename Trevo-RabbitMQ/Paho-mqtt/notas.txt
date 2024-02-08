@@ -1,0 +1,5 @@
+Referências:
+https://jvilleres3.medium.com/mqtt-quickstart-set-up-an-mqtt-broker-and-client-for-your-iot-project-6b9f96c06e64
+
+AWS SQS:
+https://medium.com/@gundogdu.emre/rabbitmq-mqtt-amqp-a1c915ecc1c2

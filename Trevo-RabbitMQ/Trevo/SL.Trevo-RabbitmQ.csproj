@@ -5,8 +5,12 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
-    <RootNamespace>SL.Trevo_RabbitmQ</RootNamespace>
+    <RootNamespace>SL.Trevo_RabbitMQ</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Notas.5txt" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />

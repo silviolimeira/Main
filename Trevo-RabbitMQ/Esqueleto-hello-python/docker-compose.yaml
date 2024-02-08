@@ -1,0 +1,11 @@
+services:
+  slhello:
+    image: slhello:1.0
+    container_name: slhello
+    networks:
+      - compose-bridge
+networks:
+  compose-bridge:
+    driver: bridge
+
+# docker run -it --rm --name slhello slhello:1.0
